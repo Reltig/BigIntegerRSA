@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "5/v0QYiMbZxqlZskdo/EDQf/Y9cEgCd+yqgxSqUY5mjh6MqnCnRo3KgGVrg4XFCccx/bGkH0aBx6BcF2Lr64bg==",
+  "success": true,
+  "projectFilePath": "D:\\c# projects\\.NET Projects\\Lab1RSA\\Lab1RSA\\Lab1RSA.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\1\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\1\\.nuget\\packages\\netstandard.library\\2.0.0\\netstandard.library.2.0.0.nupkg.sha512",
+    "C:\\Users\\1\\.nuget\\packages\\nunit\\3.13.3\\nunit.3.13.3.nupkg.sha512",
+    "C:\\Users\\1\\.nuget\\packages\\nunitlite\\3.13.3\\nunitlite.3.13.3.nupkg.sha512"
+  ],
+  "logs": []
+}
