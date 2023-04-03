@@ -30,19 +30,10 @@ public class BigInt
         Digits = digits;
         Sign = sign;
     }
-    public BigInt(string number)
-    {
-        Sign = number[0] == '-';
-        Digits = number.Skip(Sign ? 1 : 0).Select(c => (byte)(c - '0')).Reverse().ToArray();
-    }
-    public BigInt(long number) : 
-        this(number
-            .ToString()
-            .Skip(number < 0 ? 1 : 0)
-            .Select(c => (byte)(c - '0'))
-            .Reverse()
-            .ToArray(), 
-            number < 0){}
+    public BigInt(string number) :
+        this(number.Skip(number[0] == '-' ? 1 : 0).Select(c => (byte)(c - '0')).Reverse().ToArray(), 
+            number[0] == '-') { }
+    public BigInt(long number) : this(number.ToString()){}
 
     public static BigInt operator +(BigInt first, BigInt second)
     {
@@ -93,13 +84,7 @@ public class BigInt
             if (carry)  temp += 10;
             result.Add((byte)temp);
         }
-        return new BigInt(
-            result
-            .AsEnumerable()
-            .Reverse()
-            .SkipWhile(b => b == 0) //TODO:проверить
-            .Reverse()
-            .ToArray(), sign);
+        return new BigInt(result.ToArray(), sign);
     }
 
     public static BigInt operator -(BigInt first) => new BigInt(first.Digits, !first.Sign);

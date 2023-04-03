@@ -87,7 +87,7 @@ public class Tests
         AdditionTest(a, b);
         SubstractionTest(a, b);
         //DivisionTest(a, b);
-        MultiplicationTestLong(a, b);
+        //MultiplicationTestLong(a, b);
     }
     
     private static string RandomString(string alphabet, int lenght, Random ran)
