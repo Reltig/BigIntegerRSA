@@ -1,17 +1,19 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿using Lab1RSA;
 
-using Lab1RSA;
-
-var p = new BigInt("13752723258252338103239309175083");
-var q = new BigInt("29844690060152886429199167686411");
+var p = new BigInt("13");//752723258252338103239309175083");
+var q = new BigInt("29");//"844690060152886429199167686411");
 
 var n = p * q;
-var phi = (p - 1.ToBigInt()) * (q - 1.ToBigInt());
-var e = "429496729021".ToBigInt();
+var phi = (p - 1) * (q - 1);
+var e = "5".ToBigInt();
 var d = BigInt.ReverseByMod(e, phi);
-// var m = 111.ToBigInt();
-// var c = BigInt.PowByMod(m, e, n);
-// m = BigInt.PowByMod(c, d, n);
 
-Console.WriteLine(d.ToString());
-//Console.WriteLine(BigInt.ReverseByMod(199.ToBigInt(), 37.ToBigInt()).ToString());
+var message1 = File.ReadAllBytes("text.txt");
+var binaryString = string.Join("", message1.Select(b => Convert.ToString(b, 2)).ToArray());
+var m = binaryString.FromNumeralSystemByBase(2);
+
+var c = BigInt.PowByMod(m, e, n);
+m = BigInt.PowByMod(c, d, n);
+var message2 = new string(m.ToNumeralSystemByBase(2).BynaryStringToByteArray().Select(b => (char)b).ToArray());
+
+Console.WriteLine(message2);

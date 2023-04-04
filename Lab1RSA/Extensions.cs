@@ -38,4 +38,29 @@ public static class Extensions
     {
         return new BigInt(number.ToString());
     }
+    
+    public static BigInt FromNumeralSystemByBase(this string num, int b)
+    {
+        BigInt p = BigInt.One;
+        BigInt res = BigInt.Zero;
+        foreach (var c in num.Reverse())
+        {
+            res = res + p * new BigInt(c.ToString());
+            p = p * b;
+        }
+
+        return res;
+    }
+    
+    public static byte[] BynaryStringToByteArray(this string str, int chunkSize = 8)
+    {
+        int numOfBytes = str.Length / 8;
+        byte[] bytes = new byte[numOfBytes];
+        for(int i = 0; i < numOfBytes; ++i)
+        {
+            bytes[i] = Convert.ToByte(str.Substring(8 * i, 8), 2);
+        }
+
+        return bytes;
+    }
 }

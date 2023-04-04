@@ -9,6 +9,7 @@ public class Tests
     [TestCase("35", "-21")]
     [TestCase("-56", "42")]
     [TestCase("-10", "-11")]
+    [TestCase("1", "99")]
     public void AdditionTest(string a, string b)
     {
         var bigA = new BigInt(a);
@@ -42,12 +43,15 @@ public class Tests
     
     [TestCase("111111111111", "111111111111")]
     [TestCase("111111111111", "100000000000")]
+    [TestCase("9363795622172","7857081434962")]
     public void MultiplicationTestLong(string a, string b)
     {
         var bigA = new BigInt(a);
         var bigB = new BigInt(b);
+        var rr = bigA * bigB;
         var r = a.ToBigInteger() * b.ToBigInteger();
-        Assert.IsTrue(bigA * bigB == r);
+        var t = r.ToString();
+        Assert.IsTrue(rr == r);
     }
     
     [TestCase("12", "3")]
@@ -86,8 +90,9 @@ public class Tests
         var b = RandomString("0123456789", rnd.Next(11, 15), rnd);
         AdditionTest(a, b);
         SubstractionTest(a, b);
-        //DivisionTest(a, b);
-        //MultiplicationTestLong(a, b);
+        DivisionTest(a, b);
+        MultiplicationTestLong(a, b);
+        ModTest(a, b);
     }
     
     private static string RandomString(string alphabet, int lenght, Random ran)
