@@ -77,7 +77,7 @@ public class Tests
     [Test]
     public void RandomTests()
     {
-        for (int i = 0; i < 100; i++)
+        for (int i = 150; i < 200; i++)
         {
             RandomTest(i);
         }
@@ -86,13 +86,17 @@ public class Tests
     public void RandomTest(int i)
     {
         var rnd = new Random(DateTime.Now.Second + i);
-        var a = RandomString("0123456789", rnd.Next(11, 15), rnd);
-        var b = RandomString("0123456789", rnd.Next(11, 15), rnd);
+        // var a = RandomString("0123456789", rnd.Next(11, 15), rnd);
+        // var b = RandomString("0123456789", rnd.Next(11, 15), rnd);
+        var a = RandomString("0123456789", i, rnd);
+        var b = RandomString("0123456789", i, rnd);
+        var now = DateTime.Now;
         AdditionTest(a, b);
         SubstractionTest(a, b);
         DivisionTest(a, b);
         MultiplicationTestLong(a, b);
         ModTest(a, b);
+        Console.WriteLine($"{i}: {DateTime.Now - now}");
     }
     
     private static string RandomString(string alphabet, int lenght, Random ran)

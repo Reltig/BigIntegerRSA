@@ -234,6 +234,8 @@ public class BigInt
         return x;
     }
     
+    
+    #region Comparasion
     public static bool operator >(BigInt first, BigInt second)
     {
         if (first.Sign ^ second.Sign)
@@ -254,8 +256,6 @@ public class BigInt
         return false;
     }
 
-    #region Comparasion
-    
     public static bool operator <(BigInt first, BigInt second)
     {
         return !(first > second) && first != second;
@@ -328,6 +328,6 @@ public class BigInt
             builder.Append((t % b).ToInt());
             t = t / b;
         }
-        return builder.ToString().Reverse().ToString();
+        return new string(builder.ToString().Reverse().ToArray());//TODO: reverse
     }
 }
